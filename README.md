@@ -11,18 +11,17 @@ ___
 
 Levels
 ---
- - Fatal       => File and Console
- - Critical    => File and Console
- - Warning  => File and Console
+ - Fatal        => File and Console
+ - Critical     => File and Console
+ - Warning      => File and Console
+ - Success      => Console
  - Info         => Console
- - Debug    => Console
+ - Debug        => Console
 
 ___
 
 How to work with:
 ---
-
-The package will automatically create a folder called logs at the parent folder that is called, and all the text logs will be injected there.
 
 ```sh
 var sLogger = require('simpler-logger');
