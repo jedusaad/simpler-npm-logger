@@ -1,10 +1,11 @@
 /**
- * Logger module
+ * Logger
  * @author João Eduardo Saad
  * @since 25/09/2018
  *
  */
 const chalk = require('chalk');
+const fs = require('fs');
 
 var currentLevel  = false;
 
@@ -15,7 +16,7 @@ module.exports.level = function (level) {
 }
 
 module.exports.debug = function (text, obj) {
-    this.path ? this.path : this.path = 'logs.txt';
+    this.path ? this.path : this.path = 'logs.log';
 
     if (    this.currentLevel == 'debug'    || 
             this.currentLevel == undefined) {
@@ -28,7 +29,7 @@ module.exports.debug = function (text, obj) {
 }
 
 module.exports.info = function (text, obj) {
-    this.path ? this.path : this.path = 'logs.txt'; 
+    this.path ? this.path : this.path = 'logs.log'; 
 
     if (    this.currentLevel == 'debug'    || 
             this.currentLevel == 'info'     || 
@@ -42,7 +43,7 @@ module.exports.info = function (text, obj) {
     
 }
 module.exports.success = function (text, obj) {
-    this.path ? this.path : this.path = 'logs.txt';
+    this.path ? this.path : this.path = 'logs.log';
 
     if (    this.currentLevel == 'debug'    || 
             this.currentLevel == 'info'     || 
@@ -57,7 +58,11 @@ module.exports.success = function (text, obj) {
 }
 
 module.exports.warning = function (text, obj) {
-    this.path ? this.path : this.path = 'logs.txt'; 
+    this.path ? this.path : this.path = 'logs.log'; 
+
+    let warning = new Date().toISOString() + ' [WARNING]';
+    let parcialText = ' : ' + text;
+    let textInfo = chalk.yellow(warning) + parcialText;
 
     if (    this.currentLevel == 'debug'    || 
             this.currentLevel == 'info'     || 
@@ -65,15 +70,21 @@ module.exports.warning = function (text, obj) {
             this.currentLevel == 'warning'  ||
             this.currentLevel == undefined) {
         if (obj == undefined) {
-            console.log(chalk.yellow(new Date().toISOString() + ' [WARNING]') + ' : ' + text);
+            console.log(textInfo);
+            fs.appendFile(this.path, '\n' + warning + parcialText, function () { });    
         } else {
-            console.log(chalk.yellow(new Date().toISOString() + ' [WARNING]') + ' : ' + text, obj);
+            console.log(textInfo, obj);
+            fs.appendFile(this.path, '\n' + warning + parcialText, function () { });
         } 
     }
 }
 
 module.exports.critical = function (text, obj) {
-    this.path ? this.path : this.path = 'logs.txt';
+    this.path ? this.path : this.path = 'logs.log';
+
+    let critical = new Date().toISOString() + ' [CRITICAL]';
+    let parcialText = ' : ' + text;
+    let textInfo = chalk.hex('#FF8000')(critical) + parcialText;
 
     if (    this.currentLevel == 'debug'    || 
             this.currentLevel == 'info'     || 
@@ -82,15 +93,21 @@ module.exports.critical = function (text, obj) {
             this.currentLevel == 'critical' ||
             this.currentLevel == undefined) {
         if (obj == undefined) {
-            console.log(chalk.hex('#FF8000')(new Date().toISOString() + ' [CRITICAL]') + ' : ' + text);
+            console.log(textInfo);
+            fs.appendFile(this.path, '\n' + critical + parcialText, function () { });
         } else {
-            console.log(chalk.hex('#FF8000')(new Date().toISOString() + ' [CRITICAL]') + ' : ' + text, obj);
-        }   
+            console.log(textInfo, obj);
+            fs.appendFile(this.path, '\n' + critical + parcialText, function () { });
+        } 
     }
 }
 
 module.exports.fatal = function (text, obj) {
-    this.path ? this.path : this.path = 'logs.txt';
+    this.path ? this.path : this.path = 'logs.log';
+
+    let fatal = new Date().toISOString() + ' [FATAL]';
+    let parcialText = ' : ' + text;
+    let textInfo = chalk.red(fatal) + parcialText;
 
     if (    this.currentLevel == 'debug'    || 
             this.currentLevel == 'info'     || 
@@ -100,9 +117,11 @@ module.exports.fatal = function (text, obj) {
             this.currentLevel == 'fatal'    ||
             this.currentLevel == undefined) {
         if (obj == undefined) {
-            console.log(chalk.red(new Date().toISOString() + ' [FATAL]') + ' : ' + text);
+            console.log(textInfo);
+            fs.appendFile(this.path, '\n' + fatal + parcialText, function () { });
         } else {
-            console.log(chalk.red(new Date().toISOString() + ' [FATAL]') + ' : ' + text, obj);
-        }   
+            console.log(textInfo, obj);
+            fs.appendFile(this.path, '\n' + fatal + parcialText, function () { });
+        }        
     }
 }

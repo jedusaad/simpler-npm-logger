@@ -1,6 +1,6 @@
 var logger = require('./logger.js');
 
-console.log(logger);
+// console.log(logger);
 logger.level('critical');
 
 logger.debug('debug');
