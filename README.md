@@ -24,7 +24,7 @@ How to work with:
 
 The package will automatically create a folder called logs at the parent folder that is called, and all the text logs will be injected there.
 
-`
+```sh
 var sLogger = require('simpler-logger');
 sLogger.level('debug');
 
@@ -42,5 +42,5 @@ sLogger.warning("Text to log");
 /BUILD FOR LOGGIN ON CONSOLES AND TEXT FILES FATAL DATA
 sLogger.fatal("Text to log");
 
-`
+```
 
