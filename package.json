@@ -1,0 +1,25 @@
+{
+  "name": "simpler-logger",
+  "version": "0.0.1",
+  "description": "Logger package to make simple ro remopve debugging log message and inserting log info into files.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node .",
+    "start":"node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jedusaad/simpler-npm-logger.git"
+  },
+  "keywords": [
+    "log",
+    "logger",
+    "warning"
+  ],
+  "author": "jedusaad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jedusaad/simpler-npm-logger/issues"
+  },
+  "homepage": "https://github.com/jedusaad/simpler-npm-logger#readme"
+}
