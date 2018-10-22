@@ -1,11 +1,11 @@
 {
   "name": "simpler-logger",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "Logger package to make simple ro remopve debugging log message and inserting log info into files.",
   "main": "index.js",
   "scripts": {
     "test": "node .",
-    "start":"node ."
+    "start": "node ."
   },
   "repository": {
     "type": "git",
@@ -14,7 +14,10 @@
   "keywords": [
     "log",
     "logger",
-    "warning"
+    "warning",
+    "info",
+    "console",
+    "console.log"
   ],
   "author": "jedusaad",
   "license": "MIT",
